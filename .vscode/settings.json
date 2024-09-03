@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "wave_shooter_v2.sln"
+    "dotnet.defaultSolution": "waveshooter.sln"
 }

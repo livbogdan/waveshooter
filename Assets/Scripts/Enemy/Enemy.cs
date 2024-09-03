@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-
     // Health of the enemy
     public int health;
     [HideInInspector]
     public Transform player;
 
-    // Speed of the enemy
+    // Movement speed of the enemy
     public float speed;
-    // Time between enemy attacks
+    // Time between attacks
     public float timeBetweenAttacks;
     // Damage dealt by the enemy
     public int damage;
@@ -20,79 +19,72 @@ public class Enemy : MonoBehaviour
     // Score awarded for destroying the enemy
     public int scoreForDestroy;
 
-    [Header("Weapon")]
-    // Chance of dropping weapon01 when destroyed
-    public int pickupChanceWeapon01;
-    public GameObject weapon01;
-    // Chance of dropping weapon02 when destroyed
-    public int pickupChanceWeapon02;
-    public GameObject weapon02;
-    // Chance of dropping weapon03 when destroyed
-    public int pickupChanceWeapon03;
-    public GameObject weapon03;
-    // Chance of dropping weapon04 when destroyed
-    public int pickupChanceWeapon04;
-    public GameObject weapon04;
+    [Header("Health Pickup")]
 
-    // Chance of dropping health pickup when destroyed
+    // Chance of dropping a health pickup and weapon
+    [Range(0f, 100f)]
     public int healthPickupChance;
+    // Health pickup prefab
     public GameObject healthPickup;
 
-    // Effect to spawn when enemy is destroyed
+    [Header("[Ammo]")]
+
+    public GameObject ammoPickup;
+
+    [Range(0, 100)]
+    public int ammoPickupChance;
+
+    // Death effect prefab
     public GameObject deathEffect;
 
+    // Initialize the player transform
     public virtual void Start()
     {
-        // Find the player game object
+        // Find the GameObject with the "Player" tag and get its Transform component
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
+    // Handle damage taken by the enemy
     public void TakeDamage(int amount)
     {
-        // Reduce enemy health by the amount of damage taken
+        // Reduce the enemy's health by the specified amount
         health -= amount;
         if (health <= 0)
         {
-            // Random chance to drop weapon01
-            int weapon1 = Random.Range(0, 101);
-            if (weapon1 < pickupChanceWeapon01)
-            {
-                Instantiate(weapon01, transform.position, transform.rotation);
-            }
+            // Drop a health pickup if chance is met
+            DropHealthPickup();
 
-            // Random chance to drop weapon02
-            int weapon2 = Random.Range(0, 101);
-            if (weapon2 < pickupChanceWeapon02)
-            {
-                Instantiate(weapon02, transform.position, transform.rotation);
-            }
+            // Drop an ammo pickup if chance is met
+            AmmoPickup();
 
-            // Random chance to drop weapon03
-            int weapon3 = Random.Range(0, 101);
-            if (weapon3 < pickupChanceWeapon03)
-            {
-                Instantiate(weapon03, transform.position, transform.rotation);
-            }
-
-            // Random chance to drop weapon04
-            int weapon4 = Random.Range(0, 101);
-            if (weapon4 < pickupChanceWeapon04)
-            {
-                Instantiate(weapon04, transform.position, transform.rotation);
-            }
-
-            // Random chance to drop health pickup
-            int randHealth = Random.Range(0, 101);
-            if (randHealth < healthPickupChance)
-            {
-                Instantiate(healthPickup, transform.position, transform.rotation);
-            }
-
-            // Spawn death effect and destroy the enemy game object
+            // Instantiate the death effect and destroy the enemy
             Instantiate(deathEffect, transform.position, Quaternion.identity);
-            Destroy(this.gameObject);
+            Destroy(gameObject);
+            // Increment the score when the enemy is destroyed
             Weapon.score++;
         }
     }
 
+    // Drop a health pickup based on the given chance
+    private void DropHealthPickup()
+    {
+        // Generate a random number between 0 and 100
+        int random = Random.Range(0, 101);
+        // If the random number is less than the healthPickupChance, instantiate the health pickup
+        if (random < healthPickupChance)
+        {
+            Instantiate(healthPickup, transform.position, transform.rotation);
+        }
+    }
+
+    private void AmmoPickup()
+    {
+        // Generate a random number between 0 and 100
+        int random = Random.Range(0, 101);
+        // If the random number is less than the ammoPickupChance, instantiate the ammo pickup
+        if (random < ammoPickupChance)
+        {
+            Instantiate(ammoPickup, transform.position, transform.rotation);
+        }
+    }
 }

@@ -88,6 +88,7 @@ public class WaveSpawner : MonoBehaviour
 
     }
 
+    #region Spawn Methods
     IEnumerator CallNextWave(int waveIndex)
     {
         yield return new WaitForSeconds(timeBetweenWaves); // Wait before spawning the next wave
@@ -126,5 +127,6 @@ public class WaveSpawner : MonoBehaviour
 
 
     }
+    #endregion
 
 }

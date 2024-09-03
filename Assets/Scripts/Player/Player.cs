@@ -29,15 +29,16 @@ public class Player : MonoBehaviour
     private float timeBtwTrail; // Timer for spawning trail effects
     public float startTimeBtwTrail; // Initial value for the trail timer
     public Transform groundPos; // Position to spawn trail effects
-    public GameObject pausePanel; // Reference to the pause panel UI element
+
 
 
     [Header("Pause")]
     public bool paused = false; // Flag to track if the game is paused
+    public GameObject pausePanel; // Reference to the pause panel UI element
+    public GameObject cursorFollow; // Reference to the CursorFollow script
 
     private void Start()
     {
-        /*----------------------------------------------------*/
         anim = GetComponent<Animator>(); // Get the Animator component
         rb = GetComponent<Rigidbody2D>(); // Get the Rigidbody2D component
         sceneTransitions = FindObjectOfType<SceneTransition>(); // Find the SceneTransition script
@@ -45,28 +46,8 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        /*-----------------PAUSE-----------------*/
-
-        // Toggle pause state when the Escape key is pressed
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            paused = !paused;
-        }
-        // If the game is paused
-        if (paused == true)
-        {
-            Time.timeScale = 0f; // Freeze time
-            pausePanel.SetActive(true); // Show the pause panel            
-        }
-        else // If the game is not paused
-        {
-            Time.timeScale = 1f; // Unfreeze time
-            pausePanel.SetActive(false); // Hide the pause panel            
-        }
-        /*-----------------PAUSE-----------------*/
-
-        /*-----------------MOVEMENT--------------*/
         Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")); // Get the raw movement input
+        moveInput = new Vector2(moveInput.x + Input.GetAxis("Horizontal"), moveInput.y + Input.GetAxis("Vertical")); // Add mobile touch input
         moveAmount = moveInput.normalized * speed; // Calculate the movement amount
         if (moveInput != Vector2.zero) // If the player is moving
         {
@@ -86,7 +67,7 @@ public class Player : MonoBehaviour
         {
             anim.SetBool("isRunning", false); // Set the "isRunning" animation parameter to false
         }
-        /*-----------------MOVEMENT--------------*/
+
     }
 
     private void FixedUpdate()

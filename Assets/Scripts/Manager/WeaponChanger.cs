@@ -12,14 +12,14 @@ public class WeaponChanger : MonoBehaviour
     // Index of the currently selected weapon
     int weaponSelected = 0;
     // Arrays of GameObjects for weapons, sprites, and sounds
-    [SerializeField] public GameObject[] weapons, sprites, switchWeaponSound;
+    public GameObject[] weapons, sprites, switchWeaponSound;
 
     void Start()
     {
         // Set initial weapon, sprite, and sound
-        SwapWeapon(0);
-        SwapSprite(0);
-        SwapSound(0);
+        SwapWeapon(0,0,0);
+        //SwapSprite(0);
+        //SwapSound(0);
     }
 
     void Update()
@@ -29,23 +29,38 @@ public class WeaponChanger : MonoBehaviour
         {
             if (Input.GetKeyDown(weaponInput[i]) && weaponSelected != i)
             {
-                SwapWeapon(i);
-                SwapSprite(i);
-                SwapSound(i);
+                SwapWeapon(i, i, i);
             }
         }
     }
 
     // Activate the weapon GameObject at the given index and deactivate the rest
-    void SwapWeapon(int weaponType)
+    void SwapWeapon(int weaponType, int weaponSprite, int swapSound)
     {
-        for (int i = 0; i < weapons.Length; i++)
-        {
-            weapons[i].SetActive(i == weaponType);
-        }
-        weaponSelected = weaponType;
+        // Set active weapon
+        SetActiveAtIndex(weapons, weaponType);
+        // Set active sprite
+        SetActiveAtIndex(sprites, weaponSprite);
+        // Set active sound
+        SetActiveAtIndex(switchWeaponSound, swapSound);
+        // Update the selected weapon index
+        weaponSelected = swapSound;
     }
 
+    // Helper method to set active GameObject at given index and deactivate others
+    private void SetActiveAtIndex(GameObject[] objects, int index)
+    {
+        // Loop through all objects in the array
+        for (int i = 0; i < objects.Length; i++)
+        {
+            // Set active state based on whether the current index matches the given index
+            objects[i].SetActive(i == index);
+        }
+    }
+}
+
+
+    /* // Activate the weapon Sprite&Sound at the given index and deactivate the rest
     // Activate the sprite GameObject at the given index and deactivate the rest
     void SwapSprite(int weaponSprite)
     {
@@ -65,4 +80,4 @@ public class WeaponChanger : MonoBehaviour
         }
         weaponSelected = swapSound;
     }
-}
+    */

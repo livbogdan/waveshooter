@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,6 +8,7 @@ using UnityEngine.SceneManagement;
 // This script handles scene transitions with an animation
 public class SceneTransition : MonoBehaviour
 {
+    public GameObject pauseMenu;
 
     // Reference to the Animator component for the transition animation
     private Animator transitionAnim;
@@ -16,6 +18,14 @@ public class SceneTransition : MonoBehaviour
     {
         // Get the Animator component attached to this GameObject
         transitionAnim = GetComponent<Animator>();
+    }
+
+    private void Update()
+    {
+        if (pauseMenu.activeSelf && Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseGame();
+        }
     }
 
     // Load a new scene with a transition animation
@@ -47,6 +57,35 @@ public class SceneTransition : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    // Pause menu functions
+    public void PauseGame()
+    {
+        // Pause the game
+        Time.timeScale = 0f;
+        // Show the pause menu
+        pauseMenu.SetActive(true);
+    }
+
+    public void ResumeGame()
+    {
+        // Resume the game
+        Time.timeScale = 1f;
+        // Hide the pause menu
+        pauseMenu.SetActive(false);
+    }
+
+    public void RestartGame()
+    {
+        // Reload the current scene
+        ReloadScene();
+    }
+
+    public void MainMenu()
+    {
+        // Load the main menu scene
+        LoadScene("MainMenu");
     }
 
 }

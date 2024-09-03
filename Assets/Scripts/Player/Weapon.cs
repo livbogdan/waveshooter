@@ -63,20 +63,17 @@ public class Weapon : MonoBehaviour
             ammo += 20;
             Destroy(otherObject.gameObject);
         }
-
-        if (otherObject.tag == "Weapon2")
+        else if (otherObject.tag == "Weapon2")
         {
             ammo += 15;
             Destroy(otherObject.gameObject);
         }
-
-        if (otherObject.tag == "Weapon3")
+        else if (otherObject.tag == "Weapon3")
         {
             ammo += 10;
             Destroy(otherObject.gameObject);
         }
-
-        if (otherObject.tag == "Weapon4")
+        else if (otherObject.tag == "Weapon4")
         {
             ammo += 5;
             Destroy(otherObject.gameObject);

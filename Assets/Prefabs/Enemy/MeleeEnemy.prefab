@@ -46,7 +46,6 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
@@ -128,7 +127,6 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
@@ -210,7 +208,6 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
@@ -292,7 +289,6 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
@@ -374,7 +370,6 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
@@ -534,17 +529,11 @@ MonoBehaviour:
   timeBetweenAttacks: 1
   damage: 1
   scoreForDestroy: 0
-  pickupChanceWeapon01: 50
-  weapon01: {fileID: 1934359494781152, guid: 8219fd640673f3447b4502a1cf97a03b, type: 3}
-  pickupChanceWeapon02: 25
-  weapon02: {fileID: 1934359494781152, guid: d498921ecdf474c4698521e2bd31ca4b, type: 3}
-  pickupChanceWeapon03: 15
-  weapon03: {fileID: 1934359494781152, guid: 571b51f61da111d419a55056e851a665, type: 3}
-  pickupChanceWeapon04: 1
-  weapon04: {fileID: 1934359494781152, guid: 786c59be893ce8146a9d9fa9d15b8df4, type: 3}
-  healthPickupChance: 25
+  healthPickupChance: 0
   healthPickup: {fileID: 1140817993291220, guid: 99a308bc6d8d942edb43b020d4626e4e,
     type: 3}
+  ammoPickup: {fileID: 1934359494781152, guid: 8219fd640673f3447b4502a1cf97a03b, type: 3}
+  ammoPickupChance: 50
   deathEffect: {fileID: 1354371608571034, guid: 5388910d10e236b45bf87b9cd57bfce5,
     type: 3}
   stopDistance: 7
@@ -612,7 +601,6 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
@@ -694,7 +682,6 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
@@ -783,7 +770,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
-    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -902,7 +888,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
 --- !u!114 &7683132095546481565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -980,7 +965,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1091,7 +1075,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

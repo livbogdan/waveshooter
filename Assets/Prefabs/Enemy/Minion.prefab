@@ -121,18 +121,12 @@ MonoBehaviour:
   speed: 25
   timeBetweenAttacks: 0.5
   damage: 1
-  scoreForDestroy: 0
-  pickupChanceWeapon01: 50
-  weapon01: {fileID: 1934359494781152, guid: 8219fd640673f3447b4502a1cf97a03b, type: 3}
-  pickupChanceWeapon02: 25
-  weapon02: {fileID: 1934359494781152, guid: d498921ecdf474c4698521e2bd31ca4b, type: 3}
-  pickupChanceWeapon03: 10
-  weapon03: {fileID: 1934359494781152, guid: 571b51f61da111d419a55056e851a665, type: 3}
-  pickupChanceWeapon04: 5
-  weapon04: {fileID: 1934359494781152, guid: 786c59be893ce8146a9d9fa9d15b8df4, type: 3}
-  healthPickupChance: 25
+  scoreForDestroy: 5
+  healthPickupChance: 0
   healthPickup: {fileID: 1140817993291220, guid: 99a308bc6d8d942edb43b020d4626e4e,
     type: 3}
+  ammoPickup: {fileID: 1934359494781152, guid: d498921ecdf474c4698521e2bd31ca4b, type: 3}
+  ammoPickupChance: 100
   deathEffect: {fileID: 1354371608571034, guid: 5388910d10e236b45bf87b9cd57bfce5,
     type: 3}
   stopDistance: 7
